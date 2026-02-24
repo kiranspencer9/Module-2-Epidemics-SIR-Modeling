@@ -1,6 +1,9 @@
 # drug efficacy optimization example for BME 2315
 # made by Lavie, fall 2025
 
+
+# Generative AI was used as assistance for code development for the total effects of the drugs, the optimization algorithms, and the lambda optimization section.
+
 # %% import libraries
 import numpy as np
 import matplotlib.pyplot as plt
@@ -175,13 +178,13 @@ plt.show()
 
 
 '''
-1. We would pick Metroformin. Given the results in the code, Metformin achieves a strong net effect at a moderate dose while having lower toxicity sensitivity compared to Lisinopril. 
+1. We would pick Metformin. Given the results in the code, Metformin achieves a strong net effect at a moderate dose while having lower toxicity sensitivity compared to Lisinopril. 
 Although Lisinopril has the highest peak efficacy, its higher toxicity penalty (λ = 0.8) causes the optimal dose to be more tightly constrained. 
-Escitalopram has low toxicity but alsol lower efficacy, resulting in a smaller net effect. 
-2. When Lambda increases, the toxicity term necomes more important. the optimizer shifts towards lower doses, decreasing the net effect. this causes the curve to become steeper.
-When Lambda decreases, the toxity term is less influential. the optimal dose increases which increases the peak net effect. This means higher doses are able to be tolerated. Overall, icreasing lambda makes the medicine more safe but less effective, while decreasing lambda does the opposite.
+Escitalopram has low toxicity but also lower efficacy, resulting in a smaller net effect. 
+2. When Lambda increases, the toxicity term becomes more important. the optimizer shifts towards lower doses, decreasing the net effect. this causes the curve to become steeper.
+When Lambda decreases, the toxity term is less influential. the optimal dose increases which increases the peak net effect. This means higher doses are able to be tolerated. Overall, increasing lambda makes the medicine more safe but less effective, while decreasing lambda does the opposite.
 3. Newton’s method converges faster than steepest ascent because it uses second-derivative information to account for the curvature of the net effect function. Steepest ascent takes smaller steps and therefore requires more iterations to reach the optimum. 
 4. Using fewer iterations can cause the optimization to stop before reaching the true maximum, resulting in a suboptimal dose estimate. This effect is more pronounced for steepest ascent than for Newton’s method.
 5. The optimal drug effect occurs at the dose where the net effect curve reaches its maximum. For Metformin, this dose is moderate and remains stable across optimization methods, indicating a robust optimum.
 6. The combined effect curve has a higher peak than any individual drug, reflecting additive efficacy. Optimization shows that the maximum combined effect occurs when each drug is dosed near its individual optimum.
-7. By varying lambda for Metformin, an intermediate lambda value produces an optimal dose closest to the combined-effect optimal dose. Extremely high or low lambda values lead to underdosing or overdosing, respectively.'''
+7. By varying lambda for Metformin, an intermediate lambda value produces an optimal dose closest to the combined-effect optimal dose. Extremely high or low lambda values lead to underdosing or overdosing, respectively, and as seen in the second plot.'''
