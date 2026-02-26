@@ -9,7 +9,7 @@ data = pd.read_csv('C:\\Users\\kiran\\Desktop\\UVA\\Classes\\Semester 4\\Computa
 #%%
 # Plot
 plt.figure() # Create a new figure
-plt.plot(data["day"], data["active reported daily cases"]) # Plot active infections vs day
+plt.scatter(data["day"], data["active reported daily cases"]) # Plot active infections vs day
 plt.xlabel("Day") # Label for x-axis
 plt.ylabel("Active Infections") # Label for y-axis
 plt.title("DATA RELEASE #1: Active Infections vs Day") # Title for the plot
