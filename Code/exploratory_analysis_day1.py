@@ -1,6 +1,6 @@
 #%%
-import pandas as pd
-import matplotlib.pyplot as plt
+import pandas as pd # import pandas for data manipulation
+import matplotlib.pyplot as plt # import matplotlib for plotting
 
 #%%
 # Load the data
