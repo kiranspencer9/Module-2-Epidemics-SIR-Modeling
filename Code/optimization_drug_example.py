@@ -175,7 +175,46 @@ plt.title("Effect of Lambda on Optimal Metformin Dose")
 plt.grid(True)
 plt.show()
 
+# --- Extend the simulation to predict the epidemic peak ---
+extended_days = 200
+timepoints_extended = np.arange(0, extended_days, 1)
 
+S_ext, E_ext, I_ext, R_ext = run_SEIR(best_beta, best_sigma, best_gamma,
+                                      S0, E0, I0, R0,
+                                      timepoints_extended, N)
+
+
+# --- Find the predicted peak ---
+peak_height = np.max(I_ext)
+peak_day = np.argmax(I_ext)
+
+print("Predicted peak infected:", peak_height)
+print("Peak occurs on day:", peak_day)
+print("Percent of population infected at peak:", (peak_height/N)*100)
+
+
+# --- Plot model vs real data ---
+plt.figure(figsize=(10,6))
+
+plt.plot(timepoints_extended, I_ext, label="SEIR Model I(t)", linewidth=2)
+
+plt.scatter(timepoints,
+            data['active reported daily cases'],
+            color='red',
+            label="Reported Data")
+
+plt.scatter(peak_day, peak_height, color='black')
+plt.text(peak_day, peak_height,
+         f"Peak Day {peak_day}",
+         ha='left')
+
+plt.xlabel("Days")
+plt.ylabel("Active Infections")
+plt.title("SEIR Model Prediction vs Data")
+plt.legend()
+plt.grid(True)
+
+plt.show()
 
 '''
 1. We would pick Metformin. Given the results in the code, Metformin achieves a strong net effect at a moderate dose while having lower toxicity sensitivity compared to Lisinopril. 
